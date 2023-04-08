@@ -1,6 +1,9 @@
 package com.example.ecommerceapp.di
 
 
+import android.app.Application
+import android.content.Context.MODE_PRIVATE
+import com.example.ecommerceapp.utils.Constants.INTRODUCTION_SP
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -23,4 +26,12 @@ object AppModule {
     @Provides
     @Singleton
     fun provideFireStore() = Firebase.firestore
+
+
+    @Provides
+    fun provideIntroductionSP(
+        application: Application
+
+    ) = application.getSharedPreferences(INTRODUCTION_SP,MODE_PRIVATE)
+
 }
