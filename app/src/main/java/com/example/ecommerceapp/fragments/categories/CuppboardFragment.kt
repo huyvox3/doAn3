@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ecommerceapp.databinding.FragmentCuppboardCategoryBinding
 
-class CuppboardFragment:Fragment() {
+class CuppboardFragment:BaseCategoryFragment() {
     private lateinit var binding:FragmentCuppboardCategoryBinding
     override fun onCreateView(
         inflater: LayoutInflater,

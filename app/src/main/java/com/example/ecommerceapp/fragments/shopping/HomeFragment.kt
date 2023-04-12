@@ -35,14 +35,16 @@ class HomeFragment:Fragment() {
 
         )
         binding.homeViewPager.isUserInputEnabled = false
-        val viewPager2Adapter = HomeViewpagerAdapter(categoriesFragments,childFragmentManager,lifecycle)
-        binding.homeViewPager.adapter = viewPager2Adapter
-        TabLayoutMediator(binding.tabLayout,binding.homeViewPager){tab,position ->
 
+        val viewPager2Adapter = HomeViewpagerAdapter(categoriesFragments,childFragmentManager,lifecycle)
+
+        binding.homeViewPager.adapter = viewPager2Adapter
+
+        TabLayoutMediator(binding.tabLayout,binding.homeViewPager){tab,position ->
             when(position){
                 0 ->tab.text = "Main"
                 1 ->tab.text = "Chair"
-                2 ->tab.text = "Cuppboard"
+                2 ->tab.text = "Cupboard"
                 3 ->tab.text = "Table"
                 4 ->tab.text = "Accessory"
                 5 ->tab.text = "Furniture"

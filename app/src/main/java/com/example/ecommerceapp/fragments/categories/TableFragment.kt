@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.ecommerceapp.databinding.FragmentBaseCategoryBinding
 import com.example.ecommerceapp.databinding.FragmentTableCategoryBinding
 
-class TableFragment:Fragment() {
+class TableFragment:BaseCategoryFragment() {
     private lateinit var binding: FragmentTableCategoryBinding
 
     override fun onCreateView(

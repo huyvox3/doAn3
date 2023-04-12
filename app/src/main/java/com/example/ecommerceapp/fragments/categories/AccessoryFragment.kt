@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ecommerceapp.databinding.FragmentAccessoryCategoryBinding
 
-class AccessoryFragment:Fragment() {
+class AccessoryFragment:BaseCategoryFragment() {
     private lateinit var binding: FragmentAccessoryCategoryBinding
 
     override fun onCreateView(

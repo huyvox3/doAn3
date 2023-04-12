@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ecommerceapp.databinding.FragmentFurnitureCategoryBinding
 
-class FurnitureFragment:Fragment (){
+class FurnitureFragment:BaseCategoryFragment (){
 
     private lateinit var binding: FragmentFurnitureCategoryBinding
 
