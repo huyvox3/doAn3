@@ -8,15 +8,17 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:fillViewport="true"
+       android:id="@+id/nestScrollView"
        >
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
            <ProgressBar
+               android:id="@+id/mainCatProgressBar"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:visibility="visible"
+               android:visibility="gone"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +42,38 @@
 
 
            <TextView
-               android:id="@+id/featuredProductsTv"
+               android:id="@+id/onSaleTv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:fontFamily="@font/poppins_thin"
+               android:text="Good Deals"
+               android:textColor="@color/black"
+               android:textSize="22sp"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/SpecialProductRv">
+
+           </TextView>
+
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/onSaleRv"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+
+               android:layout_marginStart="15dp"
+               android:layout_marginTop="10dp"
+               app:layout_constraintStart_toStartOf="@id/SpecialProductRv"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/onSaleTv"
+               >
+           </androidx.recyclerview.widget.RecyclerView>
+
+
+
+           <TextView
+               android:id="@+id/featuredProductTv"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginTop="20dp"
@@ -49,8 +82,8 @@
                android:textColor="@color/black"
                android:textSize="22sp"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/SpecialProductRv">
+               app:layout_constraintStart_toStartOf="@id/SpecialProductRv"
+               app:layout_constraintTop_toBottomOf="@id/onSaleRv">
 
            </TextView>
 
@@ -62,44 +95,25 @@
 
                android:layout_marginStart="15dp"
                android:layout_marginTop="10dp"
-               app:layout_constraintStart_toStartOf="@id/SpecialProductRv"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/featuredProductsTv"
-               >
-           </androidx.recyclerview.widget.RecyclerView>
-
-
-
-           <TextView
-               android:id="@+id/bestChoiceTv"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               android:fontFamily="@font/poppins_thin"
-               android:text="Best choices"
-               android:textColor="@color/black"
-               android:textSize="22sp"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="@id/SpecialProductRv"
-               app:layout_constraintTop_toBottomOf="@id/featuredProductsRv">
-
-           </TextView>
-
-
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/bestChoiceRv"
-               android:layout_width="0dp"
-               android:layout_height="wrap_content"
-
-               android:layout_marginStart="15dp"
-               android:layout_marginTop="10dp"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/bestChoiceTv"
+               app:layout_constraintTop_toBottomOf="@id/featuredProductTv"
                android:layout_marginEnd="15dp"
                android:overScrollMode="never"
                >
            </androidx.recyclerview.widget.RecyclerView>
+
+           <ProgressBar
+               android:id="@+id/featuredProductProgessBar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:visibility="gone"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintBottom_toBottomOf="parent"
+               android:indeterminateTint="@color/g_gray700"
+               android:layout_marginBottom="5dp">
+           </ProgressBar>
 
        </androidx.constraintlayout.widget.ConstraintLayout>
 
