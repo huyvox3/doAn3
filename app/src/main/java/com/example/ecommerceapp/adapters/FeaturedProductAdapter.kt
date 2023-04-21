@@ -1,5 +1,6 @@
 package com.example.ecommerceapp.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.ecommerceapp.data.Product
 import com.example.ecommerceapp.databinding.FeaturedProductRvItemBinding
 import com.example.ecommerceapp.databinding.OnSaleRvItemBinding
+import com.example.ecommerceapp.helpers.getItemPrice
 
 class FeaturedProductAdapter: RecyclerView.Adapter<FeaturedProductAdapter.FeaturedProductViewHolder>() {
 
@@ -22,8 +24,10 @@ class FeaturedProductAdapter: RecyclerView.Adapter<FeaturedProductAdapter.Featur
                 featuredProductPriceTv.text = "$ ${product.price.toString()}"
                 product.offerPercentage?.let {
 
-                    val newPrice = (1f - it) * product.price
+                    val newPrice = (1f - (it / 100)) * product.price
+
                     featuredProducNewpriceTv.text ="$ ${String.format("%.2f",newPrice)}"
+                    featuredProductPriceTv.paintFlags = featuredProductPriceTv.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
                 }
 
@@ -60,7 +64,13 @@ class FeaturedProductAdapter: RecyclerView.Adapter<FeaturedProductAdapter.Featur
     override fun onBindViewHolder(holder: FeaturedProductAdapter.FeaturedProductViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
+
+        holder.itemView.setOnClickListener{
+            onClick?.invoke(product)
+        }
     }
 
     override fun getItemCount() = differ.currentList.size
+
+    var onClick:((Product) -> Unit)? = null
 }

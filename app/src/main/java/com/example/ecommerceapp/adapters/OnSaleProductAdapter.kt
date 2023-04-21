@@ -18,7 +18,7 @@ class OnSaleProductAdapter:RecyclerView.Adapter<OnSaleProductAdapter.OnSaleProdu
                onSaleNameTv.text = product.name
                 oldPriceTv.text= "$ ${product.price.toString()}"
              product.offerPercentage?.let {
-                 val newPrice = (1f - it) * product.price
+                 val newPrice = (1f - (it / 100)) * product.price
                  newPriceTv.text ="$ ${String.format("%.2f",newPrice)}"
              }
            }
@@ -49,7 +49,15 @@ class OnSaleProductAdapter:RecyclerView.Adapter<OnSaleProductAdapter.OnSaleProdu
     override fun onBindViewHolder(holder: OnSaleProductAdapter.OnSaleProductViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
+
+        holder.itemView.setOnClickListener{
+            onClick?.invoke(product)
+        }
     }
 
     override fun getItemCount() = differ.currentList.size
+
+
+
+    var onClick:((Product) -> Unit)? = null
 }

@@ -9,15 +9,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerceapp.R
 import com.example.ecommerceapp.adapters.FeaturedProductAdapter
 import com.example.ecommerceapp.databinding.FragmentBaseCategoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 open class BaseCategoryFragment:Fragment(R.layout.fragment_base_category) {
 
     private lateinit var binding: FragmentBaseCategoryBinding
@@ -50,6 +52,11 @@ open class BaseCategoryFragment:Fragment(R.layout.fragment_base_category) {
                     onFeaturedPagingRequest()
                 }
             })
+
+
+
+
+
         }
 
 
@@ -59,7 +66,6 @@ open class BaseCategoryFragment:Fragment(R.layout.fragment_base_category) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-
 
 
     }
@@ -93,5 +99,23 @@ open class BaseCategoryFragment:Fragment(R.layout.fragment_base_category) {
                 }
             }
         })
+    }
+
+
+
+    fun showOfferLoading(){
+        binding.offProductProgressBar.visibility = View.VISIBLE
+    }
+
+    fun hideOfferLoading(){
+        binding.offProductProgressBar.visibility = View.GONE
+    }
+
+    fun showFeaturedProductsLoading(){
+        binding.featuredProductProgressBar.visibility = View.VISIBLE
+    }
+
+    fun hideFeaturedProductsLoading(){
+        binding.featuredProductProgressBar.visibility = View.GONE
     }
 }

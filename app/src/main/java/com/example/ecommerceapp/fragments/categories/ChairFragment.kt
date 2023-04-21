@@ -32,37 +32,49 @@ class ChairFragment:BaseCategoryFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        offProdsLifecyle()
+        featuredProdsLifeCylce()
+    }
+
+    private fun offProdsLifecyle(){
         lifecycleScope.launchWhenStarted {
             viewModel.offerProducts.collectLatest {
                 when(it){
                     is Resource.Loading ->{
-
+                        showOfferLoading()
                     }
                     is Resource.Success ->{
                         offAdapter.differ.submitList(it.data)
+                        hideOfferLoading()
 
                     }
                     is Resource.Error ->{
-                        Snackbar.make(requireView(),it.message.toString(),Snackbar.LENGTH_LONG).show()
+                        hideOfferLoading()
+                        Snackbar.make(requireView(),it.message.toString(), Snackbar.LENGTH_LONG).show()
                     }
                     else ->Unit
                 }
             }
         }
+    }
 
 
+    private fun featuredProdsLifeCylce(){
         lifecycleScope.launchWhenStarted {
             viewModel.featureProducts.collectLatest {
                 when(it){
                     is Resource.Loading ->{
+                        showFeaturedProductsLoading()
 
                     }
                     is Resource.Success ->{
                         featuredProductAdapter.differ.submitList(it.data)
+                        hideFeaturedProductsLoading()
 
                     }
                     is Resource.Error ->{
-                        Snackbar.make(requireView(),it.message.toString(),Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(requireView(),it.message.toString(), Snackbar.LENGTH_LONG).show()
+                        hideFeaturedProductsLoading()
                     }
                     else ->Unit
                 }
